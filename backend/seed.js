@@ -7,21 +7,17 @@ async function seed() {
   const adminId = '12345-admin-67890';
   const adminDoc = await getDoc(doc(db, 'users', adminId));
   
-  if (!adminDoc.exists()) {
-    const hashed = await bcrypt.hash('admin123', 10);
-    await setDoc(doc(db, 'users', adminId), {
-      id: adminId,
-      name: 'Super Admin',
-      email: 'admin@collabrix.io',
-      password: hashed,
-      role: 'admin',
-      status: 'approved',
-      createdAt: new Date().toISOString()
-    });
-    console.log('Admin user seeded in Firebase.');
-  } else {
-    console.log('Admin user already exists.');
-  }
+  const hashed = await bcrypt.hash('admin123', 10);
+  await setDoc(doc(db, 'users', adminId), {
+    id: adminId,
+    name: 'Super Admin',
+    email: 'admin@collabrix.io',
+    password: hashed,
+    role: 'admin',
+    status: 'approved',
+    createdAt: new Date().toISOString()
+  });
+  console.log('Admin user seeded/updated in Firebase.');
   process.exit(0);
 }
 

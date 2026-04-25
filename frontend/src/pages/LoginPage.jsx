@@ -63,14 +63,14 @@ export default function LoginPage() {
             <div className="input-group">
               <label className="input-label">Email Address</label>
               <input className="input" type="email" placeholder="you@example.com" value={form.email}
-                onChange={e => set('email', e.target.value)} required />
+                onChange={e => set('email', e.target.value)} required autoComplete="email" />
             </div>
             <div className="input-group">
               <label className="input-label">Password</label>
               <div style={{ position: 'relative' }}>
                 <input className="input" type={showPwd ? 'text' : 'password'} placeholder="••••••••"
                   value={form.password} onChange={e => set('password', e.target.value)}
-                  style={{ paddingRight: 44 }} required />
+                  style={{ paddingRight: 44 }} required autoComplete="current-password" />
                 <button type="button" onClick={() => setShowPwd(p => !p)}
                   style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-secondary)', display: 'flex' }}>
                   {showPwd ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -82,18 +82,7 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="divider-text" style={{ margin: '20px 0' }}>Quick demo</div>
-          <div style={{ display: 'grid', grid: 'auto/repeat(3,1fr)', gap: 8 }}>
-            {[
-              { label: '👑 Admin', e: 'admin@collabrix.io', p: 'admin123' },
-              { label: '🎨 Creator', e: 'creator@test.com', p: 'test123' },
-              { label: '🏢 Brand', e: 'brand@test.com', p: 'test123' },
-            ].map(d => (
-              <button key={d.label} className="btn btn-secondary btn-sm" onClick={() => fillDemo(d.e, d.p)}>
-                {d.label}
-              </button>
-            ))}
-          </div>
+
 
           <p style={{ marginTop: 24, textAlign: 'center', fontSize: 14, color: 'var(--text-secondary)' }}>
             Don't have an account?{' '}
