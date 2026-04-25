@@ -7,7 +7,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://collabrix-1-a8d6.onrender.com',
         changeOrigin: true,
       },
     },
